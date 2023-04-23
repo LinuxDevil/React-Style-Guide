@@ -29,7 +29,7 @@ When we review it with our colleagues/friends, we finally chisel out the flaws. 
 1.  Extracting functions outside the params so that it wont get evaluated every time
     
 
-```
+```js
 // Bad code
 <Button 
   onClick={() => { //... }}
@@ -48,7 +48,7 @@ const onClickHandler = () => {
 1.  Extract logic outside the HTML
     
 
-```
+```js
 // Bad code
 return (
   candidates.map((candidate) => {
@@ -78,7 +78,7 @@ return (
 
 The dry principle, also known as the "don't repeat yourself" principle, is a concept in software development that suggests that developers should avoid writing the same code multiple times in a program. The idea behind this principle is that writing the same code multiple times can lead to a number of problems, such as increased complexity, difficulty maintaining the code, and increased potential for errors. Instead, developers should strive to write code that is modular and reusable, so that they can avoid repeating themselves and make their code more maintainable and reliable.
 
-```
+```js
 // This function checks if a given number is even
 function isEven(number: number): boolean {
   return number % 2 === 0;
@@ -110,7 +110,7 @@ function isEvenOrOdd(calculationNumber: number): 'even' | 'odd' {
 
 The KISS principle, which stands for "keep it simple, stupid," is a concept in software development that suggests that developers should strive to keep their code as simple and straightforward as possible. The idea behind this principle is that complex and overly-clever code can be difficult to understand and maintain, and can increase the potential for errors. Instead, developers should aim to write code that is clear, concise, and easy to understand, even if it means sacrificing some optimization or performance. This can help to make the code more maintainable and reliable in the long run.
 
-```
+```js
 // Without following the KISS principle, we might write a function like this:
 function calculateTotalPrice(price: number, quantity: number, taxRate: number): number {
   const taxAmount = price * quantity * taxRate;
@@ -136,7 +136,7 @@ function calculateTotalPrice(price: number, quantity: number, taxRate: number): 
 
 The YAGNI principle, which stands for "you ain't gonna need it," is a concept in software development that suggests that developers should avoid adding unnecessary features or functionality to their code. The idea behind this principle is that it is often difficult to predict what features or functionality will be needed in the future, and adding unnecessary features can make the code more complex and difficult to maintain. Instead, developers should focus on implementing only the features and functionality that are necessary for the current version of the software, and avoid adding extra features that may not be used. This can help to keep the code simple and focused, and make it easier to maintain and evolve over time.
 
-```
+```js
 // Without following the YAGNI principle, we might write a function like this:
 function calculateTotalPrice(price: number, quantity: number, taxRate: number, discount: number): number {
   const discountAmount = price * quantity * discount;
@@ -168,7 +168,7 @@ Distinguish names in such a way that the reader knows what the differences offer
 
 **Bad:**
 
-```
+```js
 function between<T>(a1: T, a2: T, a3: T): boolean {
   return a2 <= a1 && a1 <= a3;
 }
@@ -176,7 +176,7 @@ function between<T>(a1: T, a2: T, a3: T): boolean {
 
 **Good:**
 
-```
+```js
 function between<T>(value: T, left: T, right: T): boolean {
   return left <= value && value <= right;
 }
@@ -188,7 +188,7 @@ If you can’t pronounce it, you can’t discuss it without sounding like an idi
 
 **Bad:**
 
-```
+```js
 type DtaRcrd102 = {
   genymdhms: Date;
   modymdhms: Date;
@@ -198,7 +198,7 @@ type DtaRcrd102 = {
 
 **Good:**
 
-```
+```js
 type Customer = {
   generationTimestamp: Date;
   modificationTimestamp: Date;
@@ -210,7 +210,7 @@ type Customer = {
 
 **Bad:**
 
-```
+```js
 function getUserInfo(): User;
 function getUserDetails(): User;
 function getUserData(): User;
@@ -218,7 +218,7 @@ function getUserData(): User;
 
 **Good:**
 
-```
+```js
 function getUser(): User;
 ```
 
@@ -228,14 +228,14 @@ We will read more code than we will ever write. It's important that the code we 
 
 **Bad:**
 
-```
+```js
 // What the heck is 86400000 for?
 setTimeout(restart, 86400000);
 ```
 
 **Good:**
 
-```
+```js
 // Declare them as capitalized named constants.
 const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000; // 86400000
 
@@ -246,7 +246,7 @@ setTimeout(restart, MILLISECONDS_PER_DAY);
 
 **Bad:**
 
-```
+```js
 declare const users: Map<string, User>;
 
 for (const keyValue of users) {
@@ -256,7 +256,7 @@ for (const keyValue of users) {
 
 **Good:**
 
-```
+```js
 declare const users: Map<string, User>;
 
 for (const [id, user] of users) {
@@ -270,7 +270,7 @@ Explicit is better than implicit. _Clarity is king._
 
 **Bad:**
 
-```
+```js
 const u = getUser();
 const s = getSubscription();
 const t = charge(u, s);
@@ -278,7 +278,7 @@ const t = charge(u, s);
 
 **Good:**
 
-```
+```js
 const user = getUser();
 const subscription = getSubscription();
 const transaction = charge(user, subscription);
@@ -290,7 +290,7 @@ If your class/type/object name tells you something, don't repeat that in your va
 
 **Bad:**
 
-```
+```js
 type Car = {
   carMake: string;
   carModel: string;
@@ -304,7 +304,7 @@ function print(car: Car): void {
 
 **Good:**
 
-```
+```js
 type Car = {
   make: string;
   model: string;
@@ -322,7 +322,7 @@ Default arguments are often cleaner than short circuiting.
 
 **Bad:**
 
-```
+```js
 function loadPages(count?: number) {
   const loadCount = count !== undefined ? count : 10;
   // ...
@@ -331,7 +331,7 @@ function loadPages(count?: number) {
 
 **Good:**
 
-```
+```js
 function loadPages(count: number = 10) {
   // ...
 }
@@ -344,7 +344,7 @@ different rather than the exact value of those.
 
 **Bad:**
 
-```
+```js
 const GENRE = {
   ROMANTIC: 'romantic',
   DRAMA: 'drama',
@@ -367,7 +367,7 @@ class Projector {
 
 **Good:**
 
-```
+```js
 enum GENRE {
   ROMANTIC,
   DRAMA,
@@ -415,7 +415,7 @@ This has a few advantages:
 
 **Bad:**
 
-```
+```js
 function createMenu(title: string, body: string, buttonText: string, cancellable: boolean) {
   // ...
 }
@@ -425,7 +425,7 @@ createMenu('Foo', 'Bar', 'Baz', true);
 
 **Good:**
 
-```
+```js
 function createMenu(options: { title: string; body: string; buttonText: string; cancellable: boolean }) {
   // ...
 }
@@ -440,7 +440,7 @@ createMenu({
 
 You can further improve readability by using [type aliases](https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases):
 
-```
+```js
 type MenuOptions = { title: string; body: string; buttonText: string; cancellable: boolean };
 
 function createMenu(options: MenuOptions) {
@@ -461,7 +461,7 @@ This is by far the most important rule in software engineering. When functions d
 
 **Bad:**
 
-```
+```js
 function emailActiveClients(clients: Client[]) {
   clients.forEach((client) => {
     const clientRecord = database.lookup(client);
@@ -474,7 +474,7 @@ function emailActiveClients(clients: Client[]) {
 
 **Good:**
 
-```
+```js
 function emailActiveClients(clients: Client[]) {
   clients.filter(isActiveClient).forEach(email);
 }
@@ -489,7 +489,7 @@ function isActiveClient(client: Client) {
 
 **Bad:**
 
-```
+```js
 function addToDate(date: Date, month: number): Date {
   // ...
 }
@@ -502,7 +502,7 @@ addToDate(date, 1);
 
 **Good:**
 
-```
+```js
 function addMonthToDate(date: Date, month: number): Date {
   // ...
 }
@@ -517,7 +517,7 @@ When you have more than one level of abstraction your function is usually doing 
 
 **Bad:**
 
-```
+```js
 function parseCode(code: string) {
   const REGEXES = [
     /* ... */
@@ -544,7 +544,7 @@ function parseCode(code: string) {
 
 **Good:**
 
-```
+```js
 const REGEXES = [
   /* ... */
 ];
@@ -596,7 +596,7 @@ Getting the abstraction right is critical, that's why you should follow the [SOL
 
 **Bad:**
 
-```
+```js
 function showDeveloperList(developers: Developer[]) {
   developers.forEach((developer) => {
     const expectedSalary = developer.calculateExpectedSalary();
@@ -632,7 +632,7 @@ function showManagerList(managers: Manager[]) {
 
 **Good:**
 
-```
+```js
 class Developer {
   // ...
   getExtraDetails() {
@@ -670,7 +670,7 @@ function showEmployeeList(employee: (Developer | Manager)[]) {
 
 You may also consider adding a union type, or common parent class if it suits your abstraction.
 
-```
+```js
 class Developer {
   // ...
 }
@@ -694,7 +694,7 @@ You should be critical about code duplication. Sometimes there is a tradeoff bet
 
 **Bad:**
 
-```
+```js
 type MenuConfig = { title?: string; body?: string; buttonText?: string; cancellable?: boolean };
 
 function createMenu(config: MenuConfig) {
@@ -711,7 +711,7 @@ createMenu({ body: 'Bar' });
 
 **Good:**
 
-```
+```js
 type MenuConfig = { title?: string; body?: string; buttonText?: string; cancellable?: boolean };
 
 function createMenu(config: MenuConfig) {
@@ -733,7 +733,7 @@ createMenu({ body: 'Bar' });
 
 Or, you could use the spread operator:
 
-```
+```js
 function createMenu(config: MenuConfig) {
   const menuConfig = {
     title: 'Foo',
@@ -752,7 +752,7 @@ The main difference is that spreading defines new properties, while Object.assig
 
 Alternatively, you can use destructuring with default values:
 
-```
+```js
 type MenuConfig = { title?: string; body?: string; buttonText?: string; cancellable?: boolean };
 
 function createMenu({ title = 'Foo', body = 'Bar', buttonText = 'Baz', cancellable = true }: MenuConfig) {
@@ -772,7 +772,7 @@ Functions should do one thing. Split out your functions if they are following di
 
 **Bad:**
 
-```
+```js
 function createFile(name: string, temp: boolean) {
   if (temp) {
     fs.create(`./temp/${name}`);
@@ -784,7 +784,7 @@ function createFile(name: string, temp: boolean) {
 
 **Good:**
 
-```
+```js
 function createTempFile(name: string) {
   createFile(`./temp/${name}`);
 }
@@ -807,7 +807,7 @@ The main point is to avoid common pitfalls like sharing state between objects wi
 
 **Bad:**
 
-```
+```js
 // Global variable referenced by following function.
 let name = 'Robert C. Martin';
 
@@ -823,7 +823,7 @@ console.log(name); // expected to print 'Robert C. Martin' but instead 'Um9iZXJ0
 
 **Good:**
 
-```
+```js
 const name = 'Robert C. Martin';
 
 function toBase64(text: string): string {
@@ -853,7 +853,7 @@ Two caveats to mention to this approach:
 
 **Bad:**
 
-```
+```js
 function addItemToCart(cart: CartItem[], item: Item): void {
   cart.push({ item, date: Date.now() });
 }
@@ -861,7 +861,7 @@ function addItemToCart(cart: CartItem[], item: Item): void {
 
 **Good:**
 
-```
+```js
 function addItemToCart(cart: CartItem[], item: Item): CartItem[] {
   return [...cart, { item, date: Date.now() }];
 }
@@ -873,7 +873,7 @@ Polluting globals is a bad practice in JavaScript because you could clash with a
 
 **Bad:**
 
-```
+```js
 declare global {
   interface Array<T> {
     diff(other: T[]): Array<T>;
@@ -890,7 +890,7 @@ if (!Array.prototype.diff) {
 
 **Good:**
 
-```
+```js
 class MyArray<T> extends Array<T> {
   diff(other: T[]): T[] {
     const hash = new Set(other);
@@ -905,7 +905,7 @@ Favor this style of programming when you can.
 
 **Bad:**
 
-```
+```js
 const contributions = [
   { name: 'Uncle Bobby', linesOfCode: 500 },
   {
@@ -931,7 +931,7 @@ for (let i = 0; i < contributions.length; i++) {
 
 **Good:**
 
-```
+```js
 const contributions = [
   { name: 'Uncle Bobby', linesOfCode: 500 },
   {
@@ -955,7 +955,7 @@ const totalOutput = contributions.reduce((totalLines, output) => totalLines + ou
 
 **Bad:**
 
-```
+```js
 if (subscription.isTrial || account.balance > 0) {
   // ...
 }
@@ -963,7 +963,7 @@ if (subscription.isTrial || account.balance > 0) {
 
 **Good:**
 
-```
+```js
 function canActivateService(subscription: Subscription, account: Account) {
   return subscription.isTrial || account.balance > 0;
 }
@@ -977,7 +977,7 @@ if (canActivateService(subscription, account)) {
 
 **Bad:**
 
-```
+```js
 function isEmailNotUsed(email: string): boolean {
   // ...
 }
@@ -989,7 +989,7 @@ if (isEmailNotUsed(email)) {
 
 **Good:**
 
-```
+```js
 function isEmailUsed(email: string): boolean {
   // ...
 }
@@ -1005,7 +1005,7 @@ This seems like an impossible task. Upon first hearing this, most people say, "h
 
 **Bad:**
 
-```
+```js
 class Airplane {
   private type: string;
   // ...
@@ -1031,7 +1031,7 @@ class Airplane {
 
 **Good:**
 
-```
+```js
 abstract class Airplane {
   protected getMaxAltitude(): number {
     // shared logic with subclasses ...
@@ -1070,7 +1070,7 @@ It makes refactoring more easier.
 
 **Bad:**
 
-```
+```js
 function travelToTexas(vehicle: Bicycle | Car) {
   if (vehicle instanceof Bicycle) {
     vehicle.pedal(currentLocation, new Location('texas'));
@@ -1082,7 +1082,7 @@ function travelToTexas(vehicle: Bicycle | Car) {
 
 **Good:**
 
-```
+```js
 type Vehicle = Bicycle | Car;
 
 function travelToTexas(vehicle: Vehicle) {
@@ -1096,7 +1096,7 @@ Modern browsers do a lot of optimization under-the-hood at runtime. A lot of tim
 
 **Bad:**
 
-```
+```js
 // On old browsers, each iteration with uncached `list.length` would be costly
 // because of `list.length` recomputation. In modern browsers, this is optimized.
 for (let i = 0, len = list.length; i < len; i++) {
@@ -1106,7 +1106,7 @@ for (let i = 0, len = list.length; i < len; i++) {
 
 **Good:**
 
-```
+```js
 for (let i = 0; i < list.length; i++) {
   // ...
 }
@@ -1119,7 +1119,7 @@ If it's not being called, get rid of it! It will still be safe in your version h
 
 **Bad:**
 
-```
+```js
 function oldRequestModule(url: string) {
   // ...
 }
@@ -1134,7 +1134,7 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 
 **Good:**
 
-```
+```js
 function requestModule(url: string) {
   // ...
 }
@@ -1160,7 +1160,7 @@ There are some good reasons:
 
 **Bad:**
 
-```
+```js
 function fibonacci(n: number): number[] {
   if (n === 1) return [0];
   if (n === 2) return [0, 1];
@@ -1183,7 +1183,7 @@ print(10);
 
 **Good:**
 
-```
+```js
 // Generates an infinite stream of Fibonacci numbers.
 // The generator doesn't keep the array of all numbers.
 function* fibonacci(): IterableIterator<number> {
@@ -1211,7 +1211,7 @@ There are libraries that allow working with iterables in a similar way as with n
 chaining methods like map, slice, forEach etc. See [itiriri](https://www.npmjs.com/package/itiriri) for  
 an example of advanced manipulation with iterables (or [itiriri-async](https://www.npmjs.com/package/itiriri-async) for manipulation of async iterables).
 
-```
+```js
 import itiriri from 'itiriri';
 
 function* fibonacci(): IterableIterator<number> {
@@ -1249,7 +1249,7 @@ Using getters and setters to access data from objects that encapsulate behavior 
 
 **Bad:**
 
-```
+```js
 type BankAccount = {
   balance: number;
   // ...
@@ -1270,7 +1270,7 @@ account.balance = value;
 
 **Good:**
 
-```
+```js
 class BankAccount {
   private accountBalance: number = 0;
 
@@ -1303,7 +1303,7 @@ TypeScript supports public _(default)_, protected and private accessors on class
 
 **Bad:**
 
-```
+```js
 class Circle {
   radius: number;
 
@@ -1323,7 +1323,7 @@ class Circle {
 
 **Good:**
 
-```
+```js
 class Circle {
   constructor(private readonly radius: number) {}
   perimeter() {
@@ -1343,7 +1343,7 @@ For more advanced scenarios there is a built-in type Readonly that takes a type 
 
 **Bad:**
 
-```
+```js
 interface Config {
   host: string;
   port: string;
@@ -1353,7 +1353,7 @@ interface Config {
 
 **Good:**
 
-```
+```js
 interface Config {
   readonly host: string;
   readonly port: string;
@@ -1366,7 +1366,7 @@ It doesn't allow changes such as push() and fill(), but can use features such as
 
 **Bad:**
 
-```
+```js
 const array: number[] = [1, 3, 5];
 array = []; // error
 array.push(100); // array will be updated
@@ -1374,7 +1374,7 @@ array.push(100); // array will be updated
 
 **Good:**
 
-```
+```js
 const array: ReadonlyArray<number> = [1, 3, 5];
 array = []; // error
 array.push(100); // error
@@ -1382,7 +1382,7 @@ array.push(100); // error
 
 Declaring read-only arguments in [TypeScript 3.4 is a bit easier](https://github.com/microsoft/TypeScript/wiki/What's-new-in-TypeScript#improvements-for-readonlyarray-and-readonly-tuples).
 
-```
+```js
 function hoge(args: readonly string[]) {
   args.push(1); // error
 }
@@ -1392,7 +1392,7 @@ Prefer [const assertions](https://github.com/microsoft/TypeScript/wiki/What's-ne
 
 **Bad:**
 
-```
+```js
 const config = {
   hello: 'world'
 };
@@ -1412,7 +1412,7 @@ result.value = 200; // value is changed
 
 **Good:**
 
-```
+```js
 // read-only object
 const config = {
   hello: 'world'
@@ -1439,7 +1439,7 @@ For a more detailed explanation refer to this [answer](https://stackoverflow.com
 
 **Bad:**
 
-```
+```js
 interface EmailConfig {
   // ...
 }
@@ -1461,7 +1461,7 @@ type Shape = {
 
 **Good:**
 
-```
+```js
 type EmailConfig = {
   // ...
 };
@@ -1495,7 +1495,7 @@ The class' size is measured by its responsibility. Following the _Single Respons
 
 **Bad:**
 
-```
+```js
 class Dashboard {
   getLanguage(): string {
     /* ... */
@@ -1545,7 +1545,7 @@ class Dashboard {
 
 **Good:**
 
-```
+```js
 class Dashboard {
   disable(): void {
     /* ... */
@@ -1573,7 +1573,7 @@ Good software design has **high cohesion** and **low coupling**.
 
 **Bad:**
 
-```
+```js
 class UserManager {
   // Bad: each private variable is used by one or another group of methods.
   // It makes clear evidence that the class is holding more than a single responsibility.
@@ -1604,7 +1604,7 @@ class UserManager {
 
 **Good:**
 
-```
+```js
 class UserService {
   constructor(private readonly db: Database) {}
   async getUser(id: number): Promise<User> {
@@ -1647,7 +1647,7 @@ You might be wondering then, "when should I use inheritance?" It depends on your
 
 **Bad:**
 
-```
+```js
 class Employee {
   constructor(private readonly name: string, private readonly email: string) {}
   // ...
@@ -1665,7 +1665,7 @@ class EmployeeTaxData extends Employee {
 
 **Good:**
 
-```
+```js
 class Employee {
   private taxData: EmployeeTaxData;
 
@@ -1690,7 +1690,7 @@ This pattern is very useful and commonly used in many libraries. It allows your 
 
 **Bad:**
 
-```
+```js
 class QueryBuilder {
   private collection: string;
   private pageNumber: number = 1;
@@ -1727,7 +1727,7 @@ const query = queryBuilder.build();
 
 **Good:**
 
-```
+```js
 class QueryBuilder {
   private collection: string;
   private pageNumber: number = 1;
@@ -1768,7 +1768,7 @@ As stated in Clean Code, "There should never be more than one reason for a class
 
 **Bad:**
 
-```
+```js
 class UserSettings {
   constructor(private readonly user: User) {}
   changeSettings(settings: UserSettings) {
@@ -1785,7 +1785,7 @@ class UserSettings {
 
 **Good:**
 
-```
+```js
 class UserAuth {
   constructor(private readonly user: User) {}
   verifyCredentials() {
@@ -1814,7 +1814,7 @@ As stated by Bertrand Meyer, "software entities (classes, modules, functions, et
 
 **Bad:**
 
-```
+```js
 class AjaxAdapter extends Adapter {
   constructor() {
     super();
@@ -1855,7 +1855,7 @@ function makeHttpCall<T>(url: string): Promise<T> {
 
 **Good:**
 
-```
+```js
 abstract class Adapter {
   abstract async request<T>(url: string): Promise<T>;
 
@@ -1903,7 +1903,7 @@ The best explanation for this is if you have a parent class and a child class, t
 
 **Bad:**
 
-```
+```js
 class Rectangle {
   constructor(protected width: number = 0, protected height: number = 0) {}
   setColor(color: string): this {
@@ -1956,7 +1956,7 @@ renderLargeRectangles(rectangles);
 
 **Good:**
 
-```
+```js
 abstract class Shape {
   setColor(color: string): this {
     // ...
@@ -2007,7 +2007,7 @@ What it really means is that you should always design your abstractions in a way
 
 **Bad:**
 
-```
+```js
 interface SmartPrinter {
   print();
   fax();
@@ -2045,7 +2045,7 @@ class EconomicPrinter implements SmartPrinter {
 
 **Good:**
 
-```
+```js
 interface Printer {
   print();
 }
@@ -2094,7 +2094,7 @@ DIP is usually achieved by a using an inversion of control (IoC) container. An e
 
 **Bad:**
 
-```
+```js
 import { readFile as readFileCb } from 'fs';
 import { promisify } from 'util';
 
@@ -2128,7 +2128,7 @@ const report = await reader.read('report.xml');
 
 **Good:**
 
-```
+```js
 import { readFile as readFileCb } from 'fs';
 import { promisify } from 'util';
 
@@ -2209,7 +2209,7 @@ Tests should also follow the _Single Responsibility Principle_. Make only one as
 
 **Bad:**
 
-```
+```js
 import { assert } from 'chai';
 
 describe('AwesomeDate', () => {
@@ -2230,7 +2230,7 @@ describe('AwesomeDate', () => {
 
 **Good:**
 
-```
+```js
 import { assert } from 'chai';
 
 describe('AwesomeDate', () => {
@@ -2257,7 +2257,7 @@ When a test fails, its name is the first indication of what may have gone wrong.
 
 **Bad:**
 
-```
+```js
 describe('Calendar', () => {
   it('2/29/2020', () => {
     // ...
@@ -2293,7 +2293,7 @@ There are utilities that transform existing functions using the callback style t
 
 **Bad:**
 
-```
+```js
 import { get } from 'request';
 import { writeFile } from 'fs';
 
@@ -2324,7 +2324,7 @@ downloadPage('<https://en.wikipedia.org/wiki/Robert_Cecil_Martin',> 'article.htm
 
 **Good:**
 
-```
+```js
 import { get } from 'request';
 import { writeFile } from 'fs';
 import { promisify } from 'util';
@@ -2370,7 +2370,7 @@ With async/await syntax you can write code that is far cleaner and more understa
 
 **Bad:**
 
-```
+```js
 import { get } from 'request';
 import { writeFile } from 'fs';
 import { promisify } from 'util';
@@ -2388,7 +2388,7 @@ downloadPage('<https://en.wikipedia.org/wiki/Robert_Cecil_Martin',> 'article.htm
 
 **Good:**
 
-```
+```js
 import { get } from 'request';
 import { writeFile } from 'fs';
 import { promisify } from 'util';
@@ -2430,7 +2430,7 @@ For the same reason you should reject promises with Error types.
 
 **Bad:**
 
-```
+```js
 function calculateTotal(items: Item[]): number {
   throw 'Not implemented.';
 }
@@ -2442,7 +2442,7 @@ function get(): Promise<Item[]> {
 
 **Good:**
 
-```
+```js
 function calculateTotal(items: Item[]): number {
   throw new Error('Not implemented.');
 }
@@ -2466,7 +2466,7 @@ There are also other alternatives, not to use the throw syntax and instead alway
 
 Consider the following example:
 
-```
+```js
 type Result<R> = { isError: false; value: R };
 type Failure<E> = { isError: true; error: E };
 type Failable<R, E> = Result<R> | Failure<E>;
@@ -2489,7 +2489,7 @@ Doing nothing with a caught error doesn't give you the ability to ever fix or re
 
 **Bad:**
 
-```
+```js
 try {
   functionThatMightThrow();
 } catch (error) {
@@ -2507,7 +2507,7 @@ try {
 
 **Good:**
 
-```
+```js
 import { logger } from './logging';
 
 try {
@@ -2523,7 +2523,7 @@ For the same reason you shouldn't ignore caught errors from try/catch.
 
 **Bad:**
 
-```
+```js
 getUser()
   .then((user: User) => {
     return sendEmail(user.email, 'Welcome!');
@@ -2535,7 +2535,7 @@ getUser()
 
 **Good:**
 
-```
+```js
 import { logger } from './logging';
 
 getUser()
@@ -2572,7 +2572,7 @@ Capitalization tells you a lot about your variables, functions, etc. These rules
 
 **Bad:**
 
-```
+```js
 const DAYS_IN_WEEK = 7;
 const daysInMonth = 30;
 
@@ -2592,7 +2592,7 @@ type Container = {
 
 **Good:**
 
-```
+```js
 const DAYS_IN_WEEK = 7;
 const DAYS_IN_MONTH = 30;
 
@@ -2627,7 +2627,7 @@ We tend to read code from top-to-bottom, like a newspaper. Because of this, make
 
 **Bad:**
 
-```
+```js
 class PerformanceReview {
   constructor(private readonly employee: Employee) {}
   private lookupPeers() {
@@ -2666,7 +2666,7 @@ review.review();
 
 **Good:**
 
-```
+```js
 class PerformanceReview {
   constructor(private readonly employee: Employee) {}
   review() {
@@ -2736,7 +2736,7 @@ With clean and easy to read import statements you can quickly see the dependenci
 
 **Bad:**
 
-```
+```js
 import { TypeDefinition } from '../types/typeDefinition';
 import { AttributeTypes } from '../model/attribute';
 import { Customer, Credentials } from '../model/types';
@@ -2749,7 +2749,7 @@ import 'reflect-metadata';
 
 **Good:**
 
-```
+```js
 import 'reflect-metadata';
 
 import fs from 'fs';
@@ -2771,17 +2771,17 @@ This will avoid long relative paths when doing imports.
 
 **Bad:**
 
-```
+```js
 import { UserService } from '../../../services/UserService';
 ```
 
 **Good:**
 
-```
+```js
 import { UserService } from '@services/UserService';
 ```
 
-```
+```js
 // tsconfig.json
 ...
   "compilerOptions": {
@@ -2809,15 +2809,14 @@ Comments are an apology, not a requirement. Good code _mostly_ documents itself.
 
 **Bad:**
 
-```
+```js
 // Check if subscription is active.
 if (subscription.endDate > Date.now) {
 }
 ```
 
 **Good:**
-
-```
+```js
 const isSubscriptionActive = subscription.endDate > Date.now;
 if (isSubscriptionActive) {
   /* ... */
@@ -2830,7 +2829,7 @@ Version control exists for a reason. Leave old code in your history.
 
 **Bad:**
 
-```
+```js
 type User = {
   name: string;
   email: string;
@@ -2841,7 +2840,7 @@ type User = {
 
 **Good:**
 
-```
+```js
 type User = {
   name: string;
   email: string;
@@ -2854,7 +2853,7 @@ Remember, use version control! There's no need for dead code, commented code, an
 
 **Bad:**
 
-```
+```js
 /**
  * 2016-12-20: Removed monads, didn't understand them (RM)
  * 2016-10-01: Improved using special monads (JP)
@@ -2868,7 +2867,7 @@ function combine(a: number, b: number): number {
 
 **Good:**
 
-```
+```js
 function combine(a: number, b: number): number {
   return a + b;
 }
@@ -2882,7 +2881,7 @@ Most IDE support code folding feature that allows you to collapse/expand blocks 
 
 **Bad:**
 
-```
+```js
 ////////////////////////////////////////////////////////////////////////////////
 // Client class
 ////////////////////////////////////////////////////////////////////////////////
@@ -2914,7 +2913,7 @@ class Client {
 
 **Good:**
 
-```
+```js
 class Client {
   id: number;
   name: string;
@@ -2947,7 +2946,7 @@ Keep in mind however that a _TODO_ comment is not an excuse for bad code.
 
 **Bad:**
 
-```
+```js
 function getActiveSubscriptions(): Promise<Subscription[]> {
   // ensure `dueDate` is indexed.
   return db.subscriptions.find({ dueDate: { $lte: new Date() } });
@@ -2956,7 +2955,7 @@ function getActiveSubscriptions(): Promise<Subscription[]> {
 
 **Good:**
 
-```
+```js
 function getActiveSubscriptions(): Promise<Subscription[]> {
   // TODO: ensure `dueDate` is indexed.
   return db.subscriptions.find({ dueDate: { $lte: new Date() } });
