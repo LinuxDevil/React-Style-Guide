@@ -26,19 +26,29 @@ When we review it with our colleagues/friends, we finally chisel out the flaws. 
 
 ## Most important Principles to keep in mind is:
 
-1.  [Extracting functions outside the params so that it wont get evaluated every time](./extracting_functions.md)
+1.  [Extracting functions outside the params so that it wont get evaluated every time](./princibles/extracting_functions.md)
 
-## [DRY (Don't Repeat Yourself)](./DRY.md)
-
-
-## [ KISS (Keep it simple, stupid)]()
+## [DRY (Don't Repeat Yourself)](./princibles/DRY.md)
 
 
-## [YAGNI (You ain't gonna need it)](./YAGNI.md)
+## [ KISS (Keep it simple, stupid)](/princibles/KISS.md)
+
+
+## [YAGNI (You ain't gonna need it)](./princibles/YAGNI.md)
 
 ----
 
-## [Variables](./Vars.md)
+## Variables
+### [Use meaningful variable names](/variables/good_naming.md)
+### [Use pronounceable variable names](/variables/speakable_names.md)
+### [Use the same vocabulary for the same type of variable](/variables/vocab_for_type.md)
+### [Use searchable names](/variables/searchable_names.md)
+### [Use explanatory variables](/variables/explanitory_vars.md)
+### [Avoid Mental Mapping](/variables/no_mental_mapping.md)
+### [Use default arguments instead of short circuiting or conditionals](/variables/default_args_no_short_circuit.md)
+### [Use enum to document the intent](/variables/enums.md)
+
+----
 
 ## Functions
 
