@@ -22,19 +22,14 @@ When we review it with our colleagues/friends, we finally chisel out the flaws. 
 -   Use classes and encapsulation to organize your code into logical units and protect the internal state of your objects from being modified by external code.
     
 -   Follow the SOLID principles of object-oriented design to create code that is easy to understand, maintain, and extend.
-    
 
-## Most important Principles to keep in mind is:
-
-1.  [Extracting functions outside the params so that it wont get evaluated every time](./princibles/extracting_functions.md)
-
-## [DRY (Don't Repeat Yourself)](./princibles/DRY.md)
+#### [DRY (Don't Repeat Yourself)](./princibles/DRY.md)
 
 
-## [ KISS (Keep it simple, stupid)](/princibles/KISS.md)
+#### [ KISS (Keep it simple, stupid)](/princibles/KISS.md)
 
 
-## [YAGNI (You ain't gonna need it)](./princibles/YAGNI.md)
+#### [YAGNI (You ain't gonna need it)](./princibles/YAGNI.md)
 
 ----
 
